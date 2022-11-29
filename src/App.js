@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Nav from "./router/Nav";
+import About from "./router/About";
+import Blog from "./router/Blog";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Home from "./router/Home";
+import Chat from "./router/Chat";
+import Count from "./router/Count";
+import Swipper from "./router/Swipper";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <h1>Hi Abdulvahob</h1>
+        <Nav />
+          <Routes>
+            <Route exact path="/" element={<Home/>}/>
+            <Route path="/blog" element={<Blog/>}/>
+            <Route path="/chart" element={<Chat/>}/>
+            <Route path="/count" element={<Count/>}/>
+            <Route path="/swipper" element={<Swipper/>}/>
+          </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

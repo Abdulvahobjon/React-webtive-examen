@@ -1,0 +1,86 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #222;
+}
+
+body {
+  display: grid;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2em;
+  background: #eaeaea;
+}
+
+.show-debug {
+  position: fixed;
+  top: 2em;
+  left: 2em;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.card {
+  --perspective: 1000px;
+  --angle: 10deg;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  display: grid;
+  max-width: 300px;
+  aspect-ratio: 1/1;
+  border-radius: 0.25em;
+}
+.card__content {
+  grid-area: 1/1/-1/-1;
+  padding: 2em;
+  background: #fff;
+  border-radius: inherit;
+  box-shadow: 0 0.5em 1em 0 rgba(0, 0, 0, 0.15);
+  transform: perspective(var(--perspective)) rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+  transition: transform 500ms ease;
+}
+.card__content > * {
+  margin-block: 0;
+}
+.card__content > * + * {
+  -webkit-margin-before: 1em;
+          margin-block-start: 1em;
+}
+.card__tilt {
+  grid-area: 1/1/-1/-1;
+  z-index: 2;
+  display: grid;
+  grid-template: repeat(3, 1fr)/repeat(3, 1fr);
+}
+:root:has(#debug:checked) .card__tilt-tracker {
+  outline: 2px solid #f00;
+  outline-offset: -1px;
+}
+.card:has(.card__tilt-tracker:nth-child(-n+3):hover) {
+  --rotate-x: var(--angle);
+}
+.card:has(.card__tilt-tracker:nth-child(n+7):hover) {
+  --rotate-x: calc(var(--angle) * -1);
+}
+.card:has(.card__tilt-tracker:nth-child(3n-2):hover) {
+  --rotate-y: calc(var(--angle) * -1);
+}
+.card:has(.card__tilt-tracker:nth-child(3n):hover) {
+  --rotate-y: var(--angle);
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}

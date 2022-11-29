@@ -1,0 +1,31 @@
+
+.logo{
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 32px;
+}
+
+.link{
+    font-size: 23px;
+    line-height: 32px;
+    color: blue;
+    margin-bottom: 10px;
+    display: block;
+
+}
+li{
+    list-style: square;
+}
+
+ul{
+    display: flex;
+    gap: 62px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+}

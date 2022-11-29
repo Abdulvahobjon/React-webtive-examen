@@ -1,0 +1,6 @@
+.charts{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+    padding-top: 100px;
+}
